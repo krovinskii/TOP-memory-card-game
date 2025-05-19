@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 
 function App() {
   const [imgs, setImgs] = useState([]);
-  const { score, handleCardClick } = useMemoryGame();
+  const { score, handleCardClick, highScore } = useMemoryGame();
 
   useEffect(() => {
     const fetchedImgs = useFetchImgs(12);
@@ -19,12 +19,11 @@ function App() {
       <div className="container shadow-md p-[1rem]">
         <h1 className="text-3xl font-bold text-center">Memory Game</h1>
         <p className="text-center">
-          <span className="font-bold">How to Play:</span> Click a card to reveal
-          it. Don’t click the same card twice — if you do, your score resets!
-          Try to click all the unique cards to win.
+          <span className="font-bold">How to Play:</span> Don't click the same
+          Pokemon twice!
         </p>
       </div>
-      <Score score={score} />
+      <Score score={score} highScore={highScore} />
       <CardGrid imgArray={imgs} handleCardClick={handleCardClick} />
     </div>
   );

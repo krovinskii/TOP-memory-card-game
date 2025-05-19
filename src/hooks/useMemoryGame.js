@@ -1,9 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const useMemoryGame = () => {
   const [clickedCards, setClickedCards] = useState([]);
 
   const [score, setScore] = useState(0);
+  const [highScore, setHighScore] = useState(0);
+
+  useEffect(() => {
+    if (score > highScore) {
+      setHighScore(score);
+    }
+  }, [score, highScore]);
 
   const reset = () => {
     setScore(0);
@@ -18,6 +25,6 @@ const useMemoryGame = () => {
       setClickedCards([...clickedCards, img]);
     }
   };
-  return { handleCardClick, score, clickedCards };
+  return { handleCardClick, score, clickedCards, highScore };
 };
 export default useMemoryGame;
