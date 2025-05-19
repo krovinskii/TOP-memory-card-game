@@ -1,7 +1,7 @@
 import Card from "./Card.jsx";
 import { useState, useEffect } from "react";
 
-function CardGrid({ imgArray }) {
+function CardGrid({ imgArray, handleCardClick }) {
   const [shuffledArray, setShuffledArrary] = useState(imgArray);
 
   const shuffleCards = () => {
@@ -14,7 +14,14 @@ function CardGrid({ imgArray }) {
   return (
     <div className="container grid grid-cols-6 grid-rows-2 gap-4">
       {shuffledArray.map((imgUrl, id) => (
-        <Card key={id} img={imgUrl} onClick={shuffleCards} />
+        <Card
+          key={id}
+          img={imgUrl}
+          onClick={() => {
+            handleCardClick(imgUrl);
+            shuffleCards();
+          }}
+        />
       ))}
     </div>
   );

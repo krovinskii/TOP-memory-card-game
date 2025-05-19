@@ -5,7 +5,7 @@ function Card({ img, onClick }) {
   const [clicked, setClicked] = useState(false);
 
   const handleClick = () => {
-    onClick();
+    onClick(img);
     setClicked(true);
   };
 
@@ -17,7 +17,7 @@ function Card({ img, onClick }) {
       <img
         src={img}
         alt="Pokemon Card"
-        className="w-full h-full objectj-cover object-center"
+        className="w-full h-full  object-center"
       />
     </div>
   );
